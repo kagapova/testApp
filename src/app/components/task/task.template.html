@@ -1,0 +1,11 @@
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Имя пользователя {{task.username}}</h5>
+        <h4 class="card-title">E-mail: {{task.email}}</h4>
+        <p class="card-text">{{task.text}}</p>
+        <p *ngIf="task.status">Статус: Завершено</p>
+        <p *ngIf="!task.status">Статус: В процессе</p>
+        <a [routerLink]="['edit', id]" class="btn btn-primary" *ngIf="admin_flag" (click)="set_task()">Редактировать</a>
+        </div>
+    <img class="card-img-top" [src]="task.image_path" alt="Card image cap">
+</div>

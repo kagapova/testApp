@@ -1,0 +1,17 @@
+<form>
+    <div class="form-group">
+        <label for="text">Текст задачи</label>
+        <input type="text" class="form-control" id="text" name="text" [(ngModel)]="task.text" >
+        <small id="emailHelp" class="form-text text-muted">.</small>
+    </div>
+    <div class="form-group">
+        <label for="sel1">Статус</label>
+        <select class="form-control" id="sel1" [(ngModel)]="task.status" name="sort_direction">
+            <option [value]="0">В процессе</option>
+            <option [value]="1" >Завершено</option>
+        </select>
+    </div>
+</form>
+
+<button type="button" class="btn" (click)="change()">Изменить</button>
+

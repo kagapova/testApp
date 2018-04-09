@@ -1,0 +1,28 @@
+<button type="button" class="btn btn-success" routerLink="login" *ngIf="!admin_flag">Войти</button>
+<button type="button" class="btn btn-success" routerLink="create" *ngIf="admin_flag">Создать задачу</button>
+<div *ngIf="response_with_task">
+<div *ngFor="let task of response_with_task.message.tasks">
+    <router-outlet>
+    <app-task [task]="task">
+    </app-task>
+    </router-outlet>
+</div>
+</div>
+<div class="form-group">
+    <label for="sel1">Направление сортировки</label>
+    <select class="form-control" id="sel1" [(ngModel)]="sort_direction" name="sort_direction" (change)="get_task_on_change()">
+        <option [value]="'asc'">По возрастанию</option>
+        <option [value]="'desc'" >По убыванию</option>
+    </select>
+</div>
+<div class="form-group">
+    <label for="sel12">Сортировка по:</label>
+    <select class="form-control" id="sel12" [(ngModel)]="sort" name="sort" (change)="get_task_on_change()">
+        <option value="email">email</option>
+        <option value="id">id</option>
+        <option value="username">username</option>
+        <option value="status">status</option>
+    </select>
+</div>
+<button type="button" class="btn" *ngIf="is_previos_page" (click)="change_page('prev')"><<</button>
+<button type="button" class="btn" *ngIf="is_next_page" (click)="change_page('next')">>></button>
